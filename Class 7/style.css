@@ -1,0 +1,66 @@
+h1 {
+    background-color: grey;
+}
+.blue {
+    border-color: blue;
+}
+#h3 {
+    opacity: 0.5;
+}
+#green {
+    background-color: blue;
+}
+.white {
+    color: white;
+}
+#orange {
+    color: rgb(255, 255, 255);
+    background-color: orange;
+    border-color: orangered;
+}
+#ggg {
+    border-color: orangered;
+}
+caption {
+    background-color: greenyellow;
+}
+.aaa {
+    border-color: green;
+    
+}
+.button {
+    background-color: green;
+}
+.bbb {
+    background-color: green;
+}
+.ddd {
+    border-color: blueviolet;
+    
+}
+.ccc {
+    background-color: blueviolet ;
+    color: white;
+}
+.eee {
+    background-color: rgb(235, 57, 57);
+    color: white;
+}
+fieldset {
+    border-color: black;
+}
+.iii {
+    background-color: rgb(183, 139, 28);
+    color: white;
+}
+div{
+    background-color: rgb(20, 140, 225);
+    color: white;
+}
+.fff {
+    color: white;
+}
+.rrr {
+    background: linear-gradient(to right, #efb145, #ef7f2f);
+}
+
