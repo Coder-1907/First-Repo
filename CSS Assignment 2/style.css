@@ -1,0 +1,49 @@
+.flex-container {
+   display: flex;
+   padding-left: 110px;
+
+}
+
+.box {
+   border-color: black;
+   background-color: rgb(255, 255, 255);
+   width: 300px;
+   height: 280px;
+   margin: 10px;
+   border-radius: 1.5%;
+   border: 1px solid rgb(233, 230, 230);
+}
+
+.eee {
+   padding-left: 14px;
+   padding-top: 5%;
+   font-size: 130%;
+}
+
+.aaa {
+   margin-left: 60%;
+}
+
+.bbb {
+   margin-left: 50%;
+}
+
+.ccc {
+   margin-left: 50%;
+}
+
+.ddd {
+   margin-left: 56%;
+}
+
+.www {
+   font-size: 80%;
+}
+
+.qqq {
+   font-size: 75%;
+}
+
+.hhh {
+   margin-left: 120px;
+}
