@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Professional Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* RESET */
+    *, *::before, *::after {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      background: #0f2027; /* fallback for gradient */
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #f0f4f8;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    a {
+      color: #a8c0ff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #e0e8ff;
+    }
+    /* NAV */
+    nav {
+      background: rgba(15, 32, 39, 0.8);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 8px 30px rgba(12, 37, 61, 0.8);
+      display: flex;
+      justify-content: center;
+      padding: 1rem 2rem;
+      backdrop-filter: saturate(180%) blur(10px);
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
+    nav a {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin: 0 2rem;
+      padding-bottom: 6px;
+      position: relative;
+      color: #a8c0ff;
+      user-select: none;
+    }
+    nav a.active,
+    nav a:hover {
+      color: #f0f4f8;
+    }
+    nav a.active::after,
+    nav a:hover::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      bottom: 0;
+      left: 0;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      box-shadow: 0 2px 10px #6a11cb, 0 2px 15px #2575fc;
+      transition: width 0.3s ease;
+    }
+    /* HEADER / HERO */
+    header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 0 2rem;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      border-radius: 0 0 60px 60px;
+      box-shadow: 0 20px 60px rgba(97, 53, 255, 0.7);
+      color: white;
+    }
+    header h1 {
+      font-weight: 700;
+      font-size: 4rem;
+      letter-spacing: 8px;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 3px 15px rgba(0,0,0,0.3);
+      user-select: none;
+    }
+    header p {
+      font-weight: 500;
+      font-size: 1.6rem;
+      max-width: 600px;
+      margin-bottom: 3rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      padding: 1rem 3rem;
+      border-radius: 50px;
+      border: none;
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(97, 53, 255, 0.6);
+      transition: all 0.4s ease;
+      user-select: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 15px 40px rgba(97, 53, 255, 0.9);
+      transform: translateY(-3px);
+      background: linear-gradient(90deg, #2575fc, #6a11cb);
+    }
+    /* SECTIONS */
+    section {
+      max-width: 900px;
+      margin: 6rem auto;
+      padding: 0 1rem;
+    }
+    section h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #e0e8ff;
+      margin-bottom: 1.5rem;
+      border-left: 8px solid #6a11cb;
+      padding-left: 1rem;
+      user-select: none;
+      text-shadow: 0 1px 8px rgba(97, 53, 255, 0.7);
+    }
+    /* ABOUT */
+    #about p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #cfd8ff;
+      max-width: 700px;
+      margin: auto;
+      user-select: text;
+    }
+    /* SKILLS GRID */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .skill {
+      background: rgba(255,255,255,0.1);
+      padding: 1.5rem 1rem;
+      border-radius: 20px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-align: center;
+      color: #d2d8ff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+      user-select: none;
+      backdrop-filter: blur(6px);
+    }
+    .skill:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 40px rgba(106, 17, 203, 0.6);
+      color: #fff;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      user-select: none;
+    }
+    /* PROJECTS GRID */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+    .project-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+    }
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 60px rgba(106, 17, 203, 0.7);
+    }
+    .project-content {
+      padding: 2rem 2rem 2.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .project-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #d0d8ff;
+      text-shadow: 0 2px 8px rgba(97, 53, 255, 0.7);
+      user-select: none;
+    }
+    .project-desc {
+      flex-grow: 1;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #cfd8ff;
+      margin-bottom: 1.5rem;
+      user-select: text;
+    }
+    .project-link {
+      align-self: flex-start;
+      padding: 0.7rem 1.6rem;
+      border-radius: 50px;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 8px 25px rgba(97, 53, 255, 0.7);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      text-decoration: none;
+    }
+    .project-link:hover {
+      background: linear-gradient(90deg, #2575fc, #6a11cb);
+      box-shadow: 0 15px 40px rgba(97, 53, 255, 0.9);
+    }
+    /* CONTACT */
+    #contact {
+      margin-bottom: 5rem;
+    }
+    form {
+      max-width: 600px;
+      margin: 2rem auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+    input, textarea {
+      padding: 1.2rem 1.5rem;
+      border-radius: 20px;
+      border: none;
+      font-size: 1rem;
+      font-family: inherit;
+      color: #0f2027;
+      background: #e0e8ff;
+      box-shadow: 0 8px 20px rgba(97, 53, 255, 0.25);
+      transition: box-shadow 0.3s ease, background 0.3s ease;
+      resize: none;
+      user-select: text;
+    }
+    input::placeholder,
+    textarea::placeholder {
+      color: #9ca3af;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      background: #fff;
+      box-shadow: 0 0 15px rgba(106, 17, 203, 0.7);
+      color: #0f2027;
+    }
+    button[type="submit"] {
+      padding: 1.25rem;
+      border-radius: 50px;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(97, 53, 255, 0.6);
+      transition: all 0.3s ease;
+      user-select: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    button[type="submit"]:hover {
+      box-shadow: 0 15px 40px rgba(97, 53, 255, 0.9);
+      transform: translateY(-3px);
+      background: linear-gradient(90deg, #2575fc, #6a11cb);
+    }
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: rgba(15, 32, 39, 0.8);
+      color: #a8c0ff;
+      font-size: 0.9rem;
+      user-select: none;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      box-shadow: 0 -8px 30px rgba(12, 37, 61, 0.8);
+    }
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      nav a {
+        margin: 0 1rem;
+        font-size: 1rem;
+      }
+      header h1 {
+        font-size: 3rem;
+        letter-spacing: 4px;
+      }
+      header p {
+        font-size: 1.3rem;
+      }
+      section {
+        margin: 4rem 1rem;
+      }
+      .project-content {
+        padding: 1.5rem 1.5rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#about" class="active">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header>
+    <h1>Your Name</h1>
+    <p>Full Stack Developer | UI/UX Designer | Tech Enthusiast</p>
+    <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Contact Me</button>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I am a passionate developer with a focus on creating beautiful, functional, and accessible digital experiences. I love blending creativity with technology to deliver meaningful solutions.
+    </p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill">JavaScript</div>
+      <div class="skill">React</div>
+      <div class="skill">Node.js</div>
+      <div class="skill">CSS3 &amp; HTML5</div>
+      <div class="skill">TypeScript</div>
+      <div class="skill">UI/UX Design</div>
+      <div class="skill">Git &amp; GitHub</div>
+      <div class="skill">REST APIs</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-content">
+          <h3 class="project-title">Project One</h3>
+          <p class="project-desc">A web app built with React and Node.js to manage tasks efficiently with real-time collaboration.</p>
+          <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">View Project</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-content">
+          <h3 class="project-title">Project Two</h3>
+          <p class="project-desc">A sleek portfolio website with modern UI elements and smooth animations.</p>
+          <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">View Project</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-content">
+          <h3 class="project-title">Project Three</h3>
+          <p class="project-desc">Mobile-first eCommerce platform optimized for speed and usability.</p>
+          <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">View Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form onsubmit="event.preventDefault(); alert('Message sent!');">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 Your Name. All rights reserved.
+  </footer>
+
+</body>
+</html>
